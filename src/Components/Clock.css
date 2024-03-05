@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+
+.clock {
+  --clock-size: 180px; /* 360px / 2 */
+  width: var(--clock-size);
+  height: var(--clock-size);
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.spike {
+  position: absolute;
+  width: 4px; /* 8px / 2 */
+  height: 0.5px; /* 1px / 2 */
+  background: #fff9;
+  line-height: 10px; /* 20px / 2 */
+  transform-origin: 50%;
+  z-index: 5;
+  inset: 0;
+  margin: auto;
+  font-style: normal;
+  transform: rotate(var(--rotate)) translateX(var(--dail-size));
+}
+
+.spike:nth-child(5n + 1) {
+  box-shadow: -3.5px 0 #fff9; /* 
+  -7px / 2 */
+}
+
+.spike:nth-child(5n + 1):after {
+  content: attr(data-i);
+  position: absolute;
+  right: 11px; /* 22px / 2 */
+  top: -5px; /* -10px / 2 */
+  transition: .95s linear;
+  transform: rotate(calc(var(--dRotate) - var(--rotate)));
+}
+
+.seconds {
+  --dRotate: 0deg;
+  --dail-size: calc((var(--clock-size) / 2) - 4px); /* 8px / 2 */
+  font-weight: 800;
+  font-size: 9px; /* 18px / 2 */
+  transform: rotate(calc(-1 * var(--dRotate)));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transition: .95s linear;  
+}
+
+.minutes {
+  --dail-size: calc((var(--clock-size) / 2) - 32.5px); /* 65px / 2 */
+  font-size: 8px; /* 16px / 2 */
+  transform: rotate(calc(-1 * var(--dRotate)));
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transition: .95s linear;
+}
+
+.stop-anim {
+  transition: 0s linear;
+}
+
+.stop-anim .spike:after {
+  transition: 0s linear !important;
+}
+
+.hour {
+  font-size: 35px; /* 70px / 2 */
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.minute {
+  font-size: 15px; /* 36px / 2 */
+  font-weight: 900;
+  position: absolute;
+  background: #000;
+  z-index: 10;
+  right: calc(var(--clock-size) / 9); /* 4.5 * 2 */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.minute:after {
+  content: "";
+  position: absolute;
+  border: 1px solid #fff; /* 2px / 2 */
+  border-right: none;
+  height: 25px; /* 50px / 2 */
+  left: -5px; /* -10px / 2 */
+  top: 50%;
+  border-radius: 20px 0 0 20px; /* 40px / 2 */
+  width: calc(var(--clock-size) / 5.5); /* 2.75 * 2 */
+  transform: translatey(-50%);
+}

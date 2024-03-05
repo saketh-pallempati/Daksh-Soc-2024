@@ -1,60 +1,94 @@
 import { useState } from "react";
-import "../App.css";
-import Axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
+import axios from "axios";
 
-const Signup = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const navigate = useNavigate()
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post("http://localhost:3000/signup", {
-      username,
-      email,
-      password,
-    }).then(response => {
-        if(response.data.status) {
-            navigate('/login')
-        }
-    }).catch(err => {
-        console.log(err)
-    })
+export const SignUp = () => {
+  const formInitialDetails = {
+    username: "",
+    email: "",
+    password: "",
   };
+  const [formDetails, setFormDetails] = useState(formInitialDetails);
+  const [status, setStatus] = useState({});
+
+  const onFormUpdate = (category, value) => {
+    setFormDetails({
+      ...formDetails,
+      [category]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let response = await axios.post(
+      "http://localhost:3000/signup",
+      formDetails
+    );
+    console.log(response);
+    if (response.data.status === true) {
+      setStatus({ success: true, message: "Submitted Successfully" });
+      window.location.hash = "connect";
+    } else {
+      setStatus({
+        success: false,
+        message: "Something went wrong, please try again later.",
+      });
+    }
+  };
+
   return (
-    <div className="sign-up-container">
-      <form className="sign-up-form" onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          placeholder="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          autoComplete="off"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          placeholder="******"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button type="submit">Sign Up</button>
-        <p>Have an Account? <Link to="/login">Login</Link></p> 
-      </form>
-    </div>
+    <section className="contact1" id="connect1">
+      <Container>
+        <Row className="align-items-center">
+          <Col size={12} md={6}>
+            <h2>Sign Up</h2>
+            <form onSubmit={handleSubmit}>
+              <Row>
+                <Col size={12} sm={15} className="px-1">
+                  <input
+                    type="text"
+                    value={formDetails.username}
+                    placeholder="Username"
+                    onChange={(e) => onFormUpdate("username", e.target.value)}
+                  />
+                </Col>
+                <Col size={12} sm={15} className="px-1">
+                  <input
+                    type="email"
+                    value={formDetails.email}
+                    placeholder="Email"
+                    onChange={(e) => onFormUpdate("email", e.target.value)}
+                  />
+                </Col>
+                <Col size={12} sm={15} className="px-1">
+                  <input
+                    type="password"
+                    value={formDetails.password}
+                    placeholder="Password"
+                    onChange={(e) => onFormUpdate("password", e.target.value)}
+                  />
+                </Col>
+                <Col size={12} className="px-1">
+                  <button type="submit">
+                    <span>Sign Up</span>
+                  </button>
+                </Col>
+                {status.message && (
+                  <Col>
+                    <p
+                      className={
+                        status.success === false ? "danger" : "success"
+                      }
+                    >
+                      {status.message}
+                    </p>
+                  </Col>
+                )}
+              </Row>
+            </form>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
-
-export default Signup;

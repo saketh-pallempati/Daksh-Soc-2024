@@ -7,10 +7,14 @@ const Adminpage = () => {
   const navigate = useNavigate();
   const handleLogin = () => {
     axios
-      .post("http://localhost:3000/game/sqlInjection", {
-        username: username,
-        password: password,
-      })
+      .post(
+        "http://localhost:3000/game/sqlInjection",
+        {
+          username: username,
+          password: password,
+        },
+        { withCredentials: true }
+      )
       .then((response) => {
         if (response.data.flag) {
           navigate("/vaults");
