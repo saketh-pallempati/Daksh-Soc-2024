@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import * as THREE from "three";
 import headerImg from "../assets/img/banner-bg.png";
+import { Header } from "./Header";
+import { HintPanel } from "./HintPanel";
+import { XssPanel } from "./XssPanel";
+import { SatellitePanel } from "./SatellitePanel";
+import { MouseWheelPanel } from "./MouseWheelPanel";
+import { Footer } from "./Footer";
 
 const Dashboard1 = () => {
   useEffect(() => {
@@ -53,7 +59,6 @@ const Dashboard1 = () => {
       })();
     });
     setTimeout(() => {
-      // wait for scene to be populated (asynchronously)
       const directionalLight = world
         .scene()
         .children.find((obj3d) => obj3d.type === "DirectionalLight");
@@ -89,6 +94,11 @@ const Dashboard1 = () => {
 
   return (
     <div>
+      <Header />
+      <HintPanel />
+      <XssPanel />
+      <SatellitePanel />
+      <MouseWheelPanel />
       <div id="model-viewer"></div>
       <div id="chart"></div>
       <div
@@ -110,6 +120,7 @@ const Dashboard1 = () => {
           ar="true"
         ></model-viewer>
       </div>
+      <Footer />
     </div>
   );
 };
