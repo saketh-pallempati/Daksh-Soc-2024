@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import * as THREE from "three";
 import headerImg from "../assets/img/banner-bg.png";
+import { Header } from "./Header";
+import { Panel } from "./Panel";
 
 const Dashboard1 = () => {
   useEffect(() => {
@@ -53,7 +55,6 @@ const Dashboard1 = () => {
       })();
     });
     setTimeout(() => {
-      // wait for scene to be populated (asynchronously)
       const directionalLight = world
         .scene()
         .children.find((obj3d) => obj3d.type === "DirectionalLight");
@@ -89,6 +90,8 @@ const Dashboard1 = () => {
 
   return (
     <div>
+      <Header />
+      <Panel />
       <div id="model-viewer"></div>
       <div id="chart"></div>
       <div
