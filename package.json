@@ -19,6 +19,7 @@
     "react-on-screen": "^2.1.1",
     "react-router-dom": "^6.21.3",
     "react-router-hash-link": "^2.4.3",
+    "three": "^0.162.0",
     "vite-plugin-pages": "^0.32.0",
     "vite-plugin-react": "^4.0.1"
   },
