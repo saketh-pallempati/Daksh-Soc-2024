@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ForgotPassword from "./Components/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword";
 import Dashboard from "./Components/Dashboard";
+import Dashboard1 from "./Components/Dashboard1";
 import Adminpage from "./Components/AdminPage";
 import AdminPanel from "./Components/AdminPanel";
 import SlideShow from "./Components/SlideShow";
@@ -15,6 +16,7 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />}></Route>
         <Route path="/resetPassword/:token" element={<ResetPassword />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/dashboard1" element={<Dashboard1 />}></Route>
         <Route path="/admin.php" element={<Adminpage />}></Route>
         <Route path="/adminPanel" element={<AdminPanel />}></Route>
         <Route path="/slideshow" element={<SlideShow />}></Route>

@@ -8,6 +8,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <script src="//unpkg.com/satellite.js/dist/satellite.min.js"></script>
+    <script src="//unpkg.com/globe.gl"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.js"
+    ></script>
+    <!-- Loads <model-viewer> for old browsers like IE11-->
+    <script
+      type="nomodule"
+      src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer-legacy.js"
+    ></script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
