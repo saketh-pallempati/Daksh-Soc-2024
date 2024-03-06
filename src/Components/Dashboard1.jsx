@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import * as THREE from "three";
 import headerImg from "../assets/img/banner-bg.png";
 import { Header } from "./Header";
-import { Panel } from "./Panel";
+import { HintPanel } from "./HintPanel";
+import { XssPanel } from "./XssPanel";
+import { SatellitePanel } from "./SatellitePanel";
+import { MouseWheelPanel } from "./MouseWheelPanel";
+import { Footer } from "./Footer";
 
 const Dashboard1 = () => {
   useEffect(() => {
@@ -91,7 +95,10 @@ const Dashboard1 = () => {
   return (
     <div>
       <Header />
-      <Panel />
+      <HintPanel />
+      <XssPanel />
+      <SatellitePanel />
+      <MouseWheelPanel />
       <div id="model-viewer"></div>
       <div id="chart"></div>
       <div
@@ -113,6 +120,7 @@ const Dashboard1 = () => {
           ar="true"
         ></model-viewer>
       </div>
+      <Footer />
     </div>
   );
 };
