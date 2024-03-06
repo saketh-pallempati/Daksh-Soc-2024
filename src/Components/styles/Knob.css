@@ -1,0 +1,53 @@
+
+#knobInput{
+    width: 100px;
+}
+.knob_div{
+    width: 100px;
+}
+.knob-container {
+    position: relative;
+    background-color: #3e3e3e;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    border: solid .25rem darken(#318194 , 10%);
+    margin: 1rem auto; 
+  }
+  
+  
+  .range-input {
+    position: absolute;
+    margin-top: 30px;
+    width: 80%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    padding: 10px;
+  }
+
+  .knob_wrap{
+    height: 180px;
+  }
+
+  .knob {
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    border-radius: 60%;
+    transform: rotate(0deg);
+    z-index: 10;
+  }
+  
+  .knob:before {
+    content: "";
+    position: absolute;
+    bottom: 0em;
+    left: 1em;
+    width: 5%;
+    height: 35%;
+    background-color: #44dcff;
+    border-radius: 0;
+    box-shadow: 0 0 .4rem 0 darken(white, 5%);
+    transform: translate(-10px, -5px) rotate(45deg);
+  }

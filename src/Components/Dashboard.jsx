@@ -2,9 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Clock from "./Clock";
-import "./AnimatedButton.css";
-
+import "./styles/AnimatedButton.css";
+import Knob from "./Knob";
+import "./styles/Knob.css";
 const Dashboard = () => {
+  const [knobValue, setKnobValue] = useState(0);
+  const handleKnobChange = (newValue) => {
+    setKnobValue(newValue);
+  };
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
@@ -90,6 +95,13 @@ const Dashboard = () => {
     <div>
       <h1>Satellite control panel</h1>
       <Clock />
+      <div className="knob_wrap">
+        <div className="knob_div">
+          <label htmlFor="knobInput">Set Position:</label>
+          <Knob value={knobValue} onChange={handleKnobChange} />
+          <input id="knobInput" type="text" value={knobValue} readOnly />
+        </div>
+      </div>
       <br />
       <img
         src={`http://localhost:3000/game/images`}

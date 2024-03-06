@@ -1,4 +1,4 @@
-import "./Landing.css";
+import "./styles/Landing.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavBar } from "./NavBar";
 import { Banner } from "./Banner";
