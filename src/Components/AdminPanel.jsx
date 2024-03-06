@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import Vault from "./Vault";
 import axios from "axios";
-axios.defaults.withCredentials = true;
+import { useLocation } from "react-router-dom";
+
 const AdminPanel = () => {
+  axios.defaults.withCredentials = true;
+  const location = useLocation();
+  if (!location.state) return <div>Invalid Access</div>;
   const [vaults, setVaults] = useState([]);
 
   useEffect(() => {
@@ -22,8 +26,10 @@ const AdminPanel = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <div className="panel">
-      <h2>Welcome Admin !!!</h2>
+    <div className="admin-container">
+      <div className="panel">
+        <h2>Welcome Admin !!!</h2>
+      </div>
       <div className="vaults">
         {vaults.map((vault) => (
           <Vault key={vault._id} id={vault._id} username={vault.username} />

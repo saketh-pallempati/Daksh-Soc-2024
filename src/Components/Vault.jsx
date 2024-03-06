@@ -5,8 +5,13 @@ import "./styles/Vault.css";
 axios.defaults.withCredentials = true;
 const Vault = ({ id, username }) => {
   const [curretNum, setCurrentNum] = useState("");
+  const [rotate, setRotate] = useState(false);
   const navigate = useNavigate();
   const handleNumberClick = async (number) => {
+    setRotate(true);
+    setTimeout(() => {
+      setRotate(false);
+    }, 500);
     const newNumber = curretNum + number.toString();
     setCurrentNum(newNumber);
     console.log("PIN: ", newNumber);
@@ -15,7 +20,6 @@ const Vault = ({ id, username }) => {
         passwordEntered: newNumber,
         userId: id,
       });
-      console.log(res);
       if (res.data.flag === true) {
         window.alert("Pin is correct");
         setCurrentNum("");
@@ -45,7 +49,9 @@ const Vault = ({ id, username }) => {
               {number}
             </button>
           ))}
-          <img id="vault-wheel"
+          <img
+            id="vault-wheel"
+            className={rotate ? "rotate" : ""}
             src="https://assets-global.website-files.com/65e752ee0e953e84ab88b904/65e752ee0e953e84ab88b94b_safe%20handle.png"
             alt=""
           />

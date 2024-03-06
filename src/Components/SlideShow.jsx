@@ -31,8 +31,8 @@ const SlideShow = () => {
     };
   }, [userId]);
   const images = pics.map((pic) => ({
-    original: pic,
-    thumbnail: pic,
+    original: `http://localhost:3000/vaultImg/?id=${pic}`,
+    thumbnail: `http://localhost:3000/vaultImg/?id=${pic}`,
   }));
   const handleClick = () => {
     axios
@@ -46,7 +46,7 @@ const SlideShow = () => {
   };
 
   return (
-    <div className="vaults">
+    <div className="slideshow--container">
       <div>
         <ImageGallery
           items={images}
@@ -54,9 +54,17 @@ const SlideShow = () => {
           showFullscreenButton={false}
         />
       </div>
-      <button className="button-58" onClick={handleClick}>
-        Add to your Vault!
-      </button>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <button className="slideshow--button" onClick={handleClick}>
+          Add to your Vault!
+        </button>
+      </div>
     </div>
   );
 };

@@ -5,11 +5,30 @@ import Clock from "./Clock";
 import "./styles/AnimatedButton.css";
 import Knob from "./Knob";
 import "./styles/Knob.css";
+import Countdown from "react-countdown";
+
 const Dashboard = () => {
-  const [knobValue, setKnobValue] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const id = searchParams.get("id");
+    if (id === "id") {
+      alert("Some hint");
+      setSearchParams({});
+    } else {
+      setSearchParams({ id: "sus" });
+    }
+  }, [searchParams, setSearchParams]);
+
+  const [knobValue, setKnobValue] = useState(69);
   const handleKnobChange = (newValue) => {
     setKnobValue(newValue);
   };
+  useEffect(() => {
+    if (knobValue === 0) {
+      alert("Here is your hint!");
+    }
+  }, [knobValue]);
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
@@ -24,29 +43,6 @@ const Dashboard = () => {
     }
   };
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {
-    const fetchGameQuery = async () => {
-      let myParams = searchParams.get("id");
-      if (!myParams) {
-        setSearchParams("id", "sus");
-      } else {
-        try {
-          const res = await axios.get(
-            `http://localhost:3000/game/query?id=${myParams}`,
-            {
-              withCredentials: true,
-            }
-          );
-          console.log(res.data);
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    };
-    fetchGameQuery();
-  }, [searchParams, setSearchParams]);
-
   const [clicks, setClicks] = useState(0);
   const [startTime, setStartTime] = useState(null);
   const handleClick = () => {
@@ -60,7 +56,6 @@ const Dashboard = () => {
     const fetchGameHit = async () => {
       if (clicks === 10) {
         if (Date.now() - startTime <= 3000) {
-          console.log("10 clicks in 3 seconds");
           try {
             const res = await axios.get("http://localhost:3000/game/hit");
             alert(res.data.message);
@@ -94,6 +89,12 @@ const Dashboard = () => {
   return (
     <div>
       <h1>Satellite control panel</h1>
+      <div id="time-log">
+        Set countdown &nbsp
+        <Countdown date={Date.now() + 10000} />
+        &nbsp GMT +05:30 
+      </div>
+
       <Clock />
       <div className="knob_wrap">
         <div className="knob_div">
