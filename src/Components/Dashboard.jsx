@@ -14,7 +14,6 @@ axios.defaults.withCredentials = true;
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
   const [pswd, setPswd] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -143,14 +142,8 @@ const Dashboard = () => {
       return () => clearTimeout(timeoutId);
     }
   }, [knobValue]);
-  useEffect(() => {
-    window.onload = () => {
-      setIsLoading(false);
-    };
-  }, []);
-  return isLoading ? (
-    <div>Loading...</div>
-  ) : (
+
+  return (
     <div>
       <Knob
         size={100}
