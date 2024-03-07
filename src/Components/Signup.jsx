@@ -21,7 +21,7 @@ export const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await axios.post(
-      "http://localhost:3000/signup",
+      "https://daksh-soc-backend.vercel.app/signup",
       formDetails
     );
     console.log(response);

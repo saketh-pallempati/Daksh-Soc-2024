@@ -14,7 +14,7 @@ const Adminpage = () => {
   const handleLogin = () => {
     axios
       .post(
-        "http://localhost:3000/game/sqlInjection",
+        "https://daksh-soc-backend.vercel.app/game/sqlInjection",
         {
           username: username,
           password: password,
@@ -64,7 +64,8 @@ const Adminpage = () => {
   return (
     <div style={{ position: "relative" }}>
       <canvas id="canv" ref={canvasRef} />
-      <form id="login-form"
+      <form
+        id="login-form"
         style={{
           position: "absolute",
           top: "50%",
@@ -80,6 +81,7 @@ const Adminpage = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="💉"
           />
         </label>
         <br />
@@ -89,6 +91,7 @@ const Adminpage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="💉"
           />
         </label>
         <br />

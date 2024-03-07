@@ -10,17 +10,22 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import "./styles/AnimatedButton.css";
+// import Loader from "./Loader";
 axios.defaults.withCredentials = true;
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [pswd, setPswd] = useState("");
+
+  const [inputValue, setInputValue] = useState("");
+  const submitMethod = () => {
+    setInputValue("$" + inputValue);
+  };
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const id = searchParams.get("id");
     if (id === "id") {
-      alert("Some hint");
+      alert("What pages might a website have besides the dashboard?🤔");
       setSearchParams({});
     } else {
       setSearchParams({ id: "sus" });
@@ -30,10 +35,9 @@ const Dashboard = () => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/verify");
+        const res = await axios.get("https://daksh-soc-backend.vercel.app/verify");
         console.log(res);
         if (res.data.status) {
-          setPswd(res.data.user.vaultPassword);
           console.log("User is verified");
         } else {
           navigate("/");
@@ -136,7 +140,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (knobValue === 8) {
       const timeoutId = setTimeout(() => {
-        alert("Knob value matched with today's date!");
+        alert("The timer likes the current time 😉!");
       }, 1000);
 
       return () => clearTimeout(timeoutId);
@@ -157,16 +161,20 @@ const Dashboard = () => {
       />
       <input type="text" value={knobValue} id="knob--input" /> <Header />
       <HintPanel />
-      <XssPanel />
+      <XssPanel
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        submitMethod={submitMethod}
+      />
       <SatellitePanel />
       <div id="chart"></div>
       <img
-        src={`http://localhost:3000/game/images`}
+        src={`https://daksh-soc-backend.vercel.app/game/images`}
         alt="image"
         id="hidden--img"
       />
       <Clock />
-      <Footer pswd={pswd} />
+      <Footer value={inputValue} />
     </div>
   );
 };

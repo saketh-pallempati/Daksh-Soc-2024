@@ -10,19 +10,21 @@ export const Contact = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await axios
-      .post("http://localhost:3000/login", {
-        email,
-        password,
-      })
-      .then((response) => {
-        if (response.data.status) {
-          navigate("/dashboard");
+    try {
+      const response = await axios.post(
+        "https://daksh-soc-backend.vercel.app/login",
+        {
+          email,
+          password,
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      );
+
+      if (response.data.status) {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

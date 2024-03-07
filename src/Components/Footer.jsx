@@ -1,9 +1,13 @@
 import "./styles/Footer.css";
-export const Footer = ({ pswd }) => {
-  console.log(pswd);
+export const Footer = ({ value }) => {
   return (
     <div class="tabFooter">
-      <button className="terminal-btn">
+      <button
+        className="terminal-btn"
+        onClick={() =>
+          window.open("https://daksh-soc-terminal.vercel.app", "_blank")
+        }
+      >
         <img
           width="10px"
           height="10px"
@@ -11,7 +15,7 @@ export const Footer = ({ pswd }) => {
           alt="Terminal"
         />
       </button>
-      <div className="Footer-Text">Your Vault Password:{pswd} </div>
+      <xdiv className="Footer-Text">Previous command:{value} </xdiv>
     </div>
   );
 };

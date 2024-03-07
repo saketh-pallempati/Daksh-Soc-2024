@@ -25,7 +25,7 @@ const Vault = ({ id, username }) => {
     setCurrentNum(newNumber);
     console.log("PIN: ", newNumber);
     if (newNumber.length === 6) {
-      const res = await axios.post("http://localhost:3000/game/checkVault", {
+      const res = await axios.post("https://daksh-soc-backend.vercel.app/game/checkVault", {
         passwordEntered: newNumber,
         userId: id,
       });

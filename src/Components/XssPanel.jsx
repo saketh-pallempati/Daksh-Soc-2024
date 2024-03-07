@@ -2,19 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 import "./styles/XssPanel.css";
-export const XssPanel = () => {
-  const [inputValue, setInputValue] = useState("");
+axios.defaults.withCredentials = true;
+export const XssPanel = ({ inputValue, setInputValue, submitMethod }) => {
+  const submitClick = async () => {
+    try {
+      const response = await axios.post("https://daksh-soc-backend.vercel.app/game/check", {
+        comment: inputValue,
+      });
+      console.log(response.data);
+      alert("Check cookies");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       submitMethod();
     }
-  };
-
-  const submitMethod = () => {
-    console.log("Submit method called with value:", inputValue);
-    setInputValue("");
-    // Implement your submit logic here
   };
 
   const [clicks, setClicks] = useState(0);
@@ -31,7 +36,7 @@ export const XssPanel = () => {
       if (clicks === 10) {
         if (Date.now() - startTime <= 3000) {
           try {
-            const res = await axios.get("http://localhost:3000/game/hit");
+            const res = await axios.get("https://daksh-soc-backend.vercel.app/game/hit");
             alert(res.data.message);
           } catch (err) {
             console.log(err);
@@ -61,7 +66,9 @@ export const XssPanel = () => {
         <button className="AnimatedButton" onClick={handleClick}>
           Don't
         </button>
-        <button className="AnimatedButton">Send</button>
+        <button className="AnimatedButton" onClick={submitClick}>
+          Send
+        </button>
       </div>
     </div>
   );
