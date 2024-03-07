@@ -1,0 +1,21 @@
+.tabHeader {
+    position: fixed;
+    float: top;
+    top: 0px;
+    height: 5vh;
+    min-height: 25px;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 1)),
+        linear-gradient(140deg,
+            rgba(0, 0, 0, 1),
+            rgba(245, 245, 220, 0.6),
+            rgba(245, 245, 220, 0.5));
+    z-index: 350;
+    transform: translateY(0px);
+}
+
+.titleText {
+    font-size: x-large;
+    font-weight: 700;
+    margin-left: 5%;
+}

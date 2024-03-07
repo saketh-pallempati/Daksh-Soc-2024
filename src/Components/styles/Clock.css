@@ -5,8 +5,8 @@
   width: var(--clock-size);
   height: var(--clock-size);
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 40px;
+  left: 0;
   margin: auto;
   border-radius: 50%;
 }

@@ -4,7 +4,7 @@
 
 .admin-container {
   position: relative;
-  background-image: linear-gradient(135deg, rgba(64, 114, 148, .94), rgba(22, 37, 48, .94)), url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg"), url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg");
+  background-image: linear-gradient(135deg, rgba(64, 114, 148, .94), rgba(22, 37, 48, .94));
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -101,34 +101,16 @@
 
 .slideshow--button:hover {
   box-shadow: 0 0 3px 3px rgb(0 0 0 / 8%);
-
   align-items: center;
-  height: 100vh;
-  width: 100vw;
   background-image: linear-gradient(135deg, rgba(64, 114, 148, .94), rgba(22, 37, 48, .94)), url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg"), url("https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg");
+  transform: scale(1.1)
 }
 
-.xss {
-  position: absolute;
-  right: 5px;
-  top: 350px;
-  width: 25vw;
-  padding: 5px;
-  height: 20vh;
 
-
-  background: radial-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 1)),
-    linear-gradient(45deg,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.7));
-  z-index: 390;
-}
 
 .satellite {
-  position: absolute;
   right: 5px;
-  top: 500px;
+  top: 60%;
   width: 25vw;
   padding: 5px;
   height: 35vh;
@@ -159,108 +141,6 @@
   justify-content: center;
 }
 
-.xss-text {
-  position: absolute;
-  height: 50px;
-  top: 35%;
-  width: 95%;
-  right: 9px;
-  background-color: transparent;
-  border-radius: 4px;
-  color: green;
-  padding: 10px;
-}
-
-
-
-.terminal-btn {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  left: 350px;
-  background-color: transparent;
-}
-
-.move {
-  position: relativel;
-  left: 400px;
-
-}
-
-.move2 {
-  left: 30px;
-}
-
-.tabHeader {
-  position: fixed;
-  float: top;
-  top: 0px;
-  height: 5vh;
-  min-height: 25px;
-  width: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 1)),
-    linear-gradient(140deg,
-      rgba(0, 0, 0, 1),
-      rgba(245, 245, 220, 0.6),
-      rgba(245, 245, 220, 0.5));
-  z-index: 350;
-  transform: translateY(0px);
-}
-
-.dos {
-  position: absolute;
-  height: 40px;
-  width: 80px;
-  bottom: 0px;
-  border-radius: 10px;
-  background-color: orange;
-}
-
-.send {
-
-  position: absolute;
-  height: 40px;
-  width: 80px;
-  bottom: 0px;
-  right: 0px;
-  border-radius: 10px;
-  background-color: orange;
-
-}
-
-.tabFooter {
-  position: fixed;
-  float: bottom;
-  bottom: 0px;
-  height: 5vh;
-  min-height: 25px;
-  width: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 1)),
-    linear-gradient(140deg,
-      rgba(0, 0, 0, 1),
-      rgba(245, 245, 220, 0.6),
-      rgba(245, 245, 220, 0.5));
-  z-index: 350;
-  transform: translateY(0px);
-
-}
-
-.titleText {
-  position: absolute;
-  display: flex;
-  font-size: 1.2em;
-  width: 80%;
-  font-family: "Orbitron", sans-serif;
-  font-style: bold;
-  color: #fff;
-  cursor: move;
-  top: 0px;
-  margin-left: 35px;
-  padding-top: 0px;
-  text-shadow: 2px 2px 3px #000;
-  text-outline: 1px solid black;
-  transform: translateX(0px) translateY(0px) translateZ(0px) scale(1);
-}
 
 .closeBtn {
   width: 18px;
@@ -296,9 +176,7 @@
 
 .widget-top {
   position: absolute;
-  display: column;
-  overflow: show;
-  height: 18px;
+  height: 20px;
   width: 100%;
   left: 0px;
   border-radius: 8px;
@@ -357,6 +235,16 @@
   transform: translateX(5px) translateY(50px) translateZ(0px) scale(1);
   text-align: center;
   justify-content: center;
+}
+
+#hidden--img {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  opacity: 0;
 }
 
 @keyframes iconGlow {
@@ -768,8 +656,6 @@ div.dx-filemanager-dialog-delete-item>div {
 
 .attackMap-widget {
   position: absolute;
-  display: flex;
-  resize: both;
   color: #fff;
   border: 1px solid white;
   overflow: show auto;
@@ -913,15 +799,12 @@ div.dx-filemanager-dialog-delete-item>div {
 }
 
 #attackMap-news {
-  position: absolute;
   right: 5px;
   top: 40px;
   width: 25vw;
   padding: 5px;
-  height: 40vh;
-
-
-  background: radial-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 1)),
+  height: 30vh;
+  background: rgba(red, green, blue, alpha) radial-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 1)),
     linear-gradient(45deg,
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0.6),

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./styles/Vault.css";
@@ -7,6 +7,15 @@ const Vault = ({ id, username }) => {
   const [curretNum, setCurrentNum] = useState("");
   const [rotate, setRotate] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (rotate) {
+      const timeoutId = setTimeout(() => {
+        setRotate(false);
+      }, 500);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [rotate]);
   const handleNumberClick = async (number) => {
     setRotate(true);
     setTimeout(() => {
