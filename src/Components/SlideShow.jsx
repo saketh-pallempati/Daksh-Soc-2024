@@ -31,7 +31,7 @@ const SlideShow = () => {
     const handleKeyDown = (e) => {
       if (e.shiftKey && e.key === "Delete") {
         axios
-          .delete("https://daksh-soc-backend.vercel.app/game/deleteVault", {
+          .delete("http://localhost:3000/game/deleteVault", {
             data: { userId: userId },
           })
           .then((res) => {
@@ -51,12 +51,12 @@ const SlideShow = () => {
     };
   }, [userId, navigate]); // add navigate to the dependency array
   const images = pics.map((pic) => ({
-    original: `https://daksh-soc-backend.vercel.app/vaultImg/?id=${pic}`,
-    thumbnail: `https://daksh-soc-backend.vercel.app/vaultImg/?id=${pic}`,
+    original: `http://localhost:3000/vaultImg/?id=${pic}`,
+    thumbnail: `http://localhost:3000/vaultImg/?id=${pic}`,
   }));
   const handleClick = () => {
     axios
-      .post("https://daksh-soc-backend.vercel.app/game/addVault", { userId: userId })
+      .post("http://localhost:3000/game/addVault", { userId: userId })
       .then((res) => {
         console.log(res);
       })

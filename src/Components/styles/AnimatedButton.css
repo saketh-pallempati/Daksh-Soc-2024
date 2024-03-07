@@ -17,13 +17,14 @@
 
 
 .AnimatedButton {
-  margin: 35px 35px;
+  position: relative;
+  top: 80px;
+  left: 5px;
   height: 40px;
   width: 90px;
   font-weight: bold;
   color: #ffffff;
   text-transform: uppercase;
-  background: linear-gradient(45deg, #f13004, #fbdc2e);
   border: none;
   border-radius: 50px;
   overflow: hidden;

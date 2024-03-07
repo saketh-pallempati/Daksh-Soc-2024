@@ -15,12 +15,9 @@ axios.defaults.withCredentials = true;
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
-  const [inputValue, setInputValue] = useState("");
-  const submitMethod = () => {
-    setInputValue("$" + inputValue);
-  };
+  const [pswd, setPswd] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [startCountdown, setStartCountdown] = useState(false);
@@ -40,7 +37,7 @@ const Dashboard = () => {
   useEffect(() => {
     const id = searchParams.get("id");
     if (id === "id") {
-      alert("What pages might a website have besides the dashboard?🤔");
+      alert("Some hint");
       setSearchParams({});
     } else {
       setSearchParams({ id: "sus" });
@@ -50,8 +47,12 @@ const Dashboard = () => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/verify");
+        const res = await axios.get(
+          "http://daksh-soc-backend.vercel.app/verify"
+        );
+        console.log(res);
         if (res.data.status) {
+          setPswd(res.data.user.vaultPassword);
           console.log("User is verified");
         } else {
           navigate("/");
@@ -79,7 +80,6 @@ const Dashboard = () => {
       .objectAltitude("alt")
       .objectLabel("name");
 
-    // custom globe material
     const globeMaterial = world.globeMaterial();
     globeMaterial.bumpScale = 25;
     new THREE.TextureLoader().load(
@@ -154,7 +154,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (knobValue === 8) {
       const timeoutId = setTimeout(() => {
-        alert("The timer likes the current time 😉!");
+        alert("Knob value matched with today's date!");
       }, 1000);
 
       return () => clearTimeout(timeoutId);
@@ -184,20 +184,16 @@ const Dashboard = () => {
       )}
       <input type="text" value={knobValue} id="knob--input" /> <Header />
       <HintPanel />
-      <XssPanel
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        submitMethod={submitMethod}
-      />
+      <XssPanel />
       <SatellitePanel />
       <div id="chart"></div>
       <img
-        src={`http://localhost:3000/game/images`}
+        src={`http://daksh-soc-backend.vercel.app/game/images`}
         alt="image"
         id="hidden--img"
       />
       <Clock />
-      <Footer value={inputValue} onTimeSet={handleTimeSet} />
+      <Footer onTimeSet={handleTimeSet} />
     </div>
   );
 };

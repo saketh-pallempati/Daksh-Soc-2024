@@ -2,6 +2,8 @@
     width: 30px;
     height: 30px;
     margin:0px 10px;
+    left: 120px;
+    top:2px;
     background-color: transparent;
 }
 
@@ -29,6 +31,9 @@
 
 }
 .Footer-Text{
+    position: relative;
     font-size:large;
     font-weight: 600;
+    left: 150px;
+    top:4px;
 }

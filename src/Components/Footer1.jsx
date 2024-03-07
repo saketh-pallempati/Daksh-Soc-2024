@@ -1,6 +1,7 @@
 import "./styles/Footer.css";
 import { useState } from "react";
-export const Footer = ({ value, onTimeSet }) => {
+import { Counter } from "./Counter";
+export const Footer = ({ onTimeSet }) => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const handleMinutesChange = (event) => {
@@ -16,30 +17,26 @@ export const Footer = ({ value, onTimeSet }) => {
     console.log("Mins: ", minutes, "Secs: ", seconds);
   };
   return (
-    <div class="tabFooter">
+    <div className="tabFooter">
       <button className="terminal-btn">
         <img
           width="10px"
           height="10px"
-          src="/img/alarm.png"
+          src="src\assets\img\alarm.png"
           alt="clock"
           onClick={handleClick}
         />
       </button>
-      <button
-        className="terminal-btn"
-        onClick={() =>
-          window.open("https://daksh-soc-terminal.vercel.app", "_blank")
-        }
-      >
+
+      <button className="terminal-btn">
         <img
           width="10px"
           height="10px"
-          src="/img/terminal.png"
+          src="src\assets\img\terminal.png"
           alt="Terminal"
         />
       </button>
-      <xdiv className="Footer-Text">Previous command:{value} </xdiv>
+
       <input
         className="time"
         id="hrs"

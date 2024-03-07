@@ -12,7 +12,7 @@ export const Contact = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://daksh-soc-backend.vercel.app/login",
+        "http://localhost:3000/login",
         {
           email,
           password,

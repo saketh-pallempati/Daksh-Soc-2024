@@ -14,7 +14,7 @@ const Adminpage = () => {
   const handleLogin = () => {
     axios
       .post(
-        "https://daksh-soc-backend.vercel.app/game/sqlInjection",
+        "http://localhost:3000/game/sqlInjection",
         {
           username: username,
           password: password,

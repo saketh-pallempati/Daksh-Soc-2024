@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      Axios.post("https://daksh-soc-backend.vercel.app/forgot-password", {
+      Axios.post("http://localhost:3000/forgot-password", {
         email,
       }).then(response => {
           if(response.data.status) {

@@ -6,9 +6,12 @@ axios.defaults.withCredentials = true;
 export const XssPanel = ({ inputValue, setInputValue, submitMethod }) => {
   const submitClick = async () => {
     try {
-      const response = await axios.post("https://daksh-soc-backend.vercel.app/game/check", {
-        comment: inputValue,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/game/check",
+        {
+          comment: inputValue,
+        }
+      );
       console.log(response.data);
       alert("Check cookies");
     } catch (error) {
@@ -36,7 +39,9 @@ export const XssPanel = ({ inputValue, setInputValue, submitMethod }) => {
       if (clicks === 10) {
         if (Date.now() - startTime <= 3000) {
           try {
-            const res = await axios.get("https://daksh-soc-backend.vercel.app/game/hit");
+            const res = await axios.get(
+              "http://localhost:3000/game/hit"
+            );
             alert(res.data.message);
           } catch (err) {
             console.log(err);
@@ -62,14 +67,13 @@ export const XssPanel = ({ inputValue, setInputValue, submitMethod }) => {
         className="xss-text"
         placeholder="Type Somthing here"
       />
-      <div className="buttons--container">
-        <button className="AnimatedButton" onClick={handleClick}>
-          Don't
-        </button>
-        <button className="AnimatedButton" onClick={submitClick}>
-          Send
-        </button>
-      </div>
+
+      <button className="AnimatedButton dos" onClick={handleClick}>
+        Don't
+      </button>
+      <button className="AnimatedButton send" onClick={submitClick}>
+        Send
+      </button>
     </div>
   );
 };

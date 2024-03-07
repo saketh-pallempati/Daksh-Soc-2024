@@ -11,7 +11,7 @@ const AdminPanel = () => {
 
   useEffect(() => {
     axios
-      .get("https://daksh-soc-backend.vercel.app/game/allVaults")
+      .get("http://localhost:3000/game/allVaults")
       .then((res) => {
         if (res.data) {
           setVaults(res.data.sort(() => Math.random() - 0.5));

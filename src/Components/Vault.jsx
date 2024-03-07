@@ -6,6 +6,7 @@ axios.defaults.withCredentials = true;
 const Vault = ({ id, username }) => {
   const [curretNum, setCurrentNum] = useState("");
   const [rotate, setRotate] = useState(false);
+  const [rotatedir, setRotatedir] = useState(-1);
   const navigate = useNavigate();
   useEffect(() => {
     if (rotate) {
@@ -25,15 +26,22 @@ const Vault = ({ id, username }) => {
     setCurrentNum(newNumber);
     console.log("PIN: ", newNumber);
     if (newNumber.length === 6) {
-      const res = await axios.post("https://daksh-soc-backend.vercel.app/game/checkVault", {
-        passwordEntered: newNumber,
-        userId: id,
-      });
+      const res = await axios.post(
+        "http://localhost:3000/game/checkVault",
+        {
+          passwordEntered: newNumber,
+          userId: id,
+        }
+      );
+
       if (res.data.flag === true) {
         window.alert("Pin is correct");
+        setRotatedir(0);
         setCurrentNum("");
         navigate("/slideshow", { state: { pic: res.data.pic, userId: id } });
       } else {
+        setRotate(true);
+        setRotatedir(0);
         window.alert("Pin incorrect try again");
         setCurrentNum("");
       }
@@ -60,10 +68,21 @@ const Vault = ({ id, username }) => {
           ))}
           <img
             id="vault-wheel"
-            className={rotate ? "rotate" : ""}
+            className={
+              rotate ? (rotatedir ? "rotate " : "rotate rotate-bak") : ""
+            }
             src="https://assets-global.website-files.com/65e752ee0e953e84ab88b904/65e752ee0e953e84ab88b94b_safe%20handle.png"
             alt=""
           />
+          <div
+            className={
+              rotate
+                ? rotatedir
+                  ? "rot-col smcircle"
+                  : "rot-col-error smcircle"
+                : "nom-col smcircle"
+            }
+          ></div>
         </div>
         <h3 id="something">{username}</h3>
       </div>
