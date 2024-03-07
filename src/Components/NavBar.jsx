@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from "../assets/img/dakshlogo.png";
+import logo from "/img/dakshlogo.png";
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");

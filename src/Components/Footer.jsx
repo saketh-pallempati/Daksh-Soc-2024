@@ -11,7 +11,7 @@ export const Footer = ({ value }) => {
         <img
           width="10px"
           height="10px"
-          src="src\assets\img\terminal.png"
+          src="/img/terminal.png"
           alt="Terminal"
         />
       </button>

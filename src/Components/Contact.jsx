@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../assets/img/sat8.jpg";
+import contactImg from "/img/sat8.jpg";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
