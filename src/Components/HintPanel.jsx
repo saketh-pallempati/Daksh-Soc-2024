@@ -3,14 +3,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 export const HintPanel = () => {
   const hints = [
+    
     "Move around and check all the buttons",
-    "What is the day in the date?",
+    "What is today's date?",
     "Terminal is the way to go",
     "Images can have interesting info🔍",
-    "Stored XSS vulnerability 🍪",
+    "Opacity can cause transparency",
     "SQL Injecton (admin'or'1'='1)",
     "id=sus & sus=id => id=?",
-    "steghide google bruh"
+    "steghide google bruh",
+    " url<3 "
   ];
   return (
     <div class="attackMap-widget" id="attackMap-news">
