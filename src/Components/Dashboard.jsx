@@ -140,7 +140,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (knobValue === 8) {
       const timeoutId = setTimeout(() => {
-        alert("The timer likes the current time 😉!");
+        alert("Check for hidden image like a developer from the first pixel 👀");
       }, 1000);
 
       return () => clearTimeout(timeoutId);
